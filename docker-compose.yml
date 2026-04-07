@@ -5,6 +5,7 @@ services:
       args:
         USE_CN_PROXY: ${USE_CN_PROXY:-false}
         GOPROXY: ${GOPROXY:-}
+    container_name: ssl-tools
     ports:
       - "${HOST_PORT:-18700}:18700"
     environment:
