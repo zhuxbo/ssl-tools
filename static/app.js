@@ -35,7 +35,7 @@ function loadRegions() {
         .catch(function() {});
 }
 
-function switchRegion(url) { window.location.href = url; }
+function switchRegion(url) { window.location.href = url + window.location.search; }
 
 function parseInput(raw) {
     raw = raw.trim();
