@@ -13,11 +13,7 @@ RUN apk add --no-cache git
 
 WORKDIR /app
 
-RUN if [ -n "$GOPROXY" ]; then \
-        go env -w GOPROXY=$GOPROXY; \
-    elif [ "$USE_CN_PROXY" = "true" ]; then \
-        go env -w GOPROXY=https://goproxy.cn,direct; \
-    fi
+RUN go env -w GOPROXY=${GOPROXY:-https://goproxy.cn,direct}
 
 COPY go.mod go.sum ./
 RUN go mod download
