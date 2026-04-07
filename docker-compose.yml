@@ -1,0 +1,17 @@
+services:
+  ssl-tools:
+    build:
+      context: .
+      args:
+        USE_CN_PROXY: ${USE_CN_PROXY:-false}
+        GOPROXY: ${GOPROXY:-}
+    ports:
+      - "${HOST_PORT:-18700}:18700"
+    environment:
+      - PORT=18700
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

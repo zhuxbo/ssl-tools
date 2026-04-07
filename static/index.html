@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <h1 class="title">SSL Tools</h1>
+                <select id="regionSelect" class="region-select" style="display:none;" onchange="switchRegion(this.value)"></select>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="input" class="input"
+                    placeholder="输入域名、URL 或 IP:端口"
+                    autocomplete="off" spellcheck="false">
+                <button id="btn" class="btn-inline" onclick="startDiagnose()">诊断</button>
+            </div>
+        </header>
+
+        <main id="results" class="results" style="display:none;">
+            <section id="overview" class="card" style="display:none;">
+                <div class="card-header">
+                    <span class="card-title">概览</span>
+                    <span id="overviewLatency" class="card-meta"></span>
+                </div>
+                <div id="overviewGrid" class="overview-grid"></div>
+                <div id="issuesList" style="display:none;"></div>
+            </section>
+
+            <section id="details" class="card collapsible" style="display:none;">
+                <div class="card-header" onclick="toggleCard('details')">
+                    <span class="card-title"><span class="arrow">▼</span> 连接详情</span>
+                </div>
+                <div id="detailsBody" class="card-body"></div>
+            </section>
+
+            <section id="certificate" class="card collapsible" style="display:none;">
+                <div class="card-header" onclick="toggleCard('certificate')">
+                    <span class="card-title"><span class="arrow">▼</span> 证书信息</span>
+                </div>
+                <div id="certificateBody" class="card-body"></div>
+            </section>
+
+            <section id="protocols" class="card collapsible" style="display:none;">
+                <div class="card-header" onclick="toggleCard('protocols')">
+                    <span class="card-title"><span class="arrow">▼</span> 协议与加密</span>
+                </div>
+                <div id="protocolsBody" class="card-body"></div>
+            </section>
+
+            <section id="loadingDetails" class="card loading-card" style="display:none;">
+                <div class="card-header">
+                    <span class="card-title">▶ 连接详情</span>
+                    <span class="card-meta loading-text">检测中...</span>
+                </div>
+                <div class="loading-spinner"></div>
+            </section>
+
+            <section id="loadingProtocols" class="card loading-card" style="display:none;">
+                <div class="card-header">
+                    <span class="card-title">▶ 协议与加密</span>
+                    <span class="card-meta" style="color:#999;">等待中...</span>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

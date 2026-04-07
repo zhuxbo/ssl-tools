@@ -1,0 +1,15 @@
+{
+  "regions": [
+    {
+      "id": "cn",
+      "name": "中国",
+      "url": "https://ssl-tools-cn.cnssl.com",
+      "default": true
+    },
+    {
+      "id": "us",
+      "name": "美国",
+      "url": "https://ssl-tools-us.cnssl.com"
+    }
+  ]
+}
